@@ -1,0 +1,20 @@
+<h2>Post Details</h2>
+
+<p><%= post.content %></p>
+<p>Category: <%= post.category %></p>
+<p>Upvotes: <%= post.upvotes.length %></p>
+
+<form action="/posts/<%= post._id %>/upvote" method="POST">
+    <button>Upvote</button>
+</form>
+
+<h3>Comments</h3>
+
+<% comments.forEach(c => { %>
+    <p><%= c.text %></p>
+<% }) %>
+
+<form action="/posts/<%= post._id %>/comment" method="POST">
+    <input name="text" required>
+    <button>Comment</button>
+</form>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AnonVerse</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>Anon<span>Verse</span></h1>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+
+        <% if(!userId){ %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } else { %>
+            <a href="/create">Create</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        <% } %>
+
+        <button class="dark-btn" onclick="toggleDark()">🌙</button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Speak Freely. Stay Connected.</h2>
+    <p>The campus voice platform built for real thoughts.</p>
+</div>
+
+<!-- POSTS -->
+<div class="container">
+
+    <% if(posts.length === 0){ %>
+        <div class="card">
+            <p>No posts yet. Be the first to share something 🚀</p>
+        </div>
+    <% } %>
+
+    <% posts.forEach(post => { %>
+
+        <div class="card">
+
+            <!-- AUTHOR -->
+            <p style="font-size:13px; color:#6b7280;">
+                Posted by: 
+                <strong><%= post.author ? post.author.username : "Unknown" %></strong>
+            </p>
+
+            <!-- CONTENT -->
+            <p><%= post.content %></p>
+
+            <!-- CATEGORY -->
+            <p class="category">Category: <%= post.category %></p>
+
+            <!-- VOTE SECTION -->
+            <div class="vote-section">
+
+                <span>🔥 <%= post.upvotes.length %> upvotes</span>
+
+                <% if(userId){ %>
+                    <form action="/posts/<%= post._id %>/upvote" method="POST">
+                        <button>Upvote</button>
+                    </form>
+                <% } %>
+
+            </div>
+
+            <!-- DELETE BUTTON (ONLY OWNER) -->
+            <% if(userId && post.author && post.author._id.toString() === userId.toString()){ %>
+                <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" style="margin-top:10px;">
+                    <button style="background:#ef4444;">Delete</button>
+                </form>
+            <% } %>
+
+        </div>
+
+    <% }) %>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 AnonVerse | Built by Aditya Kumar
+</footer>
+
+<!-- DARK MODE SCRIPT -->
+<script>
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
