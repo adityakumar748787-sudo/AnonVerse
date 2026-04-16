@@ -16,7 +16,7 @@ Built using Node.js, Express, MongoDB, and EJS following MVC architecture.
 - 📊 Trending Algorithm (Vote + Time Based)
 - 🌙 Dark Mode Toggle
 - 👤 Profile Page (View Your Posts)
-- 🎨 Professional UI Design
+- 🎨 Professional UI Designs
 - 🏗 MVC Architecture
 
 ---
