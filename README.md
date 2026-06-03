@@ -6,7 +6,7 @@ Built using Node.js, Express, MongoDB, and EJS following MVC architecture.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
 - 🔐 User Authentication (Register / Login / Logout)
 - 📝 Create Posts
