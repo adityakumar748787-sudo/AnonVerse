@@ -21,7 +21,7 @@ Built using Node.js, Express, MongoDB, and EJS following MVC architecture.
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (Mongoose)
